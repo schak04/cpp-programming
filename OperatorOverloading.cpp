@@ -105,3 +105,52 @@ For suffix, we need to provide the data type in the parameter for it to work.
 //     c3.display();
 //     return 0;
 // }
+
+/* C++ only allows overloading where the left operand is the class type if it’s a member */
+
+// #include <iostream>
+// using namespace std;
+
+// class Box {
+// private:
+//     int l, b, h; // length, breadth, height
+
+// public:
+//     // Constructor
+//     Box(int length = 0, int breadth = 0, int height = 0)
+//         : l(length), b(breadth), h(height) {}
+
+//     // Overload '<' operator
+//     bool operator<(const Box& other) const {
+//         if (l < other.l)
+//             return true;
+//         if (l == other.l && b < other.b)
+//             return true;
+//         if (l == other.l && b == other.b && h < other.h)
+//             return true;
+//         return false;
+//     }
+
+//     // Overload '<<' operator
+//     friend ostream& operator<<(ostream& out, const Box& B) {
+//         out << B.l << " " << B.b << " " << B.h;
+//         return out;
+//     }
+// };
+
+// int main() {
+//     Box A(2, 3, 4);
+//     Box B(2, 3, 5);
+//     Box C(3, 1, 1);
+
+//     cout << "Box A: " << A << endl;
+//     cout << "Box B: " << B << endl;
+//     cout << "Box C: " << C << endl;
+
+//     cout << boolalpha; // print true/false instead of 1/0
+//     cout << "\nA < B: " << (A < B) << endl; // true
+//     cout << "B < A: " << (B < A) << endl; // false
+//     cout << "A < C: " << (A < C) << endl; // true (since 2 < 3)
+
+//     return 0;
+// }
