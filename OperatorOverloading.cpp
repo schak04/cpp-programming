@@ -30,7 +30,6 @@ For suffix, we need to provide the data type in the parameter for it to work.
 //     return 0;
 // }
 
-
 // class sum {
 //     public:
 //     int b, a;
@@ -55,7 +54,6 @@ For suffix, we need to provide the data type in the parameter for it to work.
 //     return 0;
 // }
 
-
 // class Complex {
 //     public:
 //     int r, i;
@@ -73,11 +71,10 @@ For suffix, we need to provide the data type in the parameter for it to work.
 
 // int main() {
 //     Complex c1(10, 20), c2(20, 30), c3;
-//     c3 = c1 + c2;   
+//     c3 = c1 + c2;
 //     c3.display();
 //     return 0;
 // }
-
 
 // class Complex {
 // public:
@@ -108,49 +105,121 @@ For suffix, we need to provide the data type in the parameter for it to work.
 
 /* C++ only allows overloading where the left operand is the class type if it’s a member */
 
-// #include <iostream>
-// using namespace std;
+#include <bits/stdc++.h>
 
-// class Box {
-// private:
-//     int l, b, h; // length, breadth, height
+using namespace std;
+// Implement the class Box
+// l,b,h are integers representing the dimensions of the box
 
-// public:
-//     // Constructor
-//     Box(int length = 0, int breadth = 0, int height = 0)
-//         : l(length), b(breadth), h(height) {}
+// The class should have the following functions :
 
-//     // Overload '<' operator
-//     bool operator<(const Box& other) const {
-//         if (l < other.l)
-//             return true;
-//         if (l == other.l && b < other.b)
-//             return true;
-//         if (l == other.l && b == other.b && h < other.h)
-//             return true;
-//         return false;
-//     }
+// Constructors:
+// Box();
+// Box(int,int,int);
+// Box(Box);
 
-//     // Overload '<<' operator
-//     friend ostream& operator<<(ostream& out, const Box& B) {
-//         out << B.l << " " << B.b << " " << B.h;
-//         return out;
-//     }
-// };
+// int getLength(); // Return box's length
+// int getBreadth (); // Return box's breadth
+// int getHeight ();  //Return box's height
+// long long CalculateVolume(); // Return the volume of the box
 
-// int main() {
-//     Box A(2, 3, 4);
-//     Box B(2, 3, 5);
-//     Box C(3, 1, 1);
+// Overload operator < as specified
+// bool operator<(Box& b)
 
-//     cout << "Box A: " << A << endl;
-//     cout << "Box B: " << B << endl;
-//     cout << "Box C: " << C << endl;
+// Overload operator << as specified
+// ostream& operator<<(ostream& out, Box& B)
 
-//     cout << boolalpha; // print true/false instead of 1/0
-//     cout << "\nA < B: " << (A < B) << endl; // true
-//     cout << "B < A: " << (B < A) << endl; // false
-//     cout << "A < C: " << (A < C) << endl; // true (since 2 < 3)
+class Box
+{
+private:
+    int l, b, h;
 
-//     return 0;
-// }
+public:
+    Box(int length = 0, int breadth = 0, int height = 0)
+    {
+        l = length;
+        b = breadth;
+        h = height;
+    }
+    Box(const Box &B)
+    {
+        l = B.l;
+        b = B.b;
+        h = B.h;
+    }
+    int getLength() const { return this->l; };
+    int getBreadth() const { return this->b; };
+    int getHeight() const { return this->h; };
+    long long CalculateVolume() const
+    {
+        return static_cast<long long>(l) * b * h;
+    }
+    bool operator<(const Box &o) const
+    {
+        if (l < o.l)
+            return true;
+        if (l == o.l && b < o.b)
+            return true;
+        if (l == o.l && b == o.b && h < o.h)
+            return true;
+        else
+            return false;
+    }
+    friend ostream &operator<<(ostream &out, const Box &B)
+    {
+        out << B.l << " " << B.b << " " << B.h;
+        return out;
+    }
+};
+
+void check2()
+{
+    int n;
+    cin >> n;
+    Box temp;
+    for (int i = 0; i < n; i++)
+    {
+        int type;
+        cin >> type;
+        if (type == 1)
+        {
+            cout << temp << endl;
+        }
+        if (type == 2)
+        {
+            int l, b, h;
+            cin >> l >> b >> h;
+            Box NewBox(l, b, h);
+            temp = NewBox;
+            cout << temp << endl;
+        }
+        if (type == 3)
+        {
+            int l, b, h;
+            cin >> l >> b >> h;
+            Box NewBox(l, b, h);
+            if (NewBox < temp)
+            {
+                cout << "Lesser\n";
+            }
+            else
+            {
+                cout << "Greater\n";
+            }
+        }
+        if (type == 4)
+        {
+            cout << temp.CalculateVolume() << endl;
+        }
+        if (type == 5)
+        {
+            Box NewBox(temp);
+            cout << NewBox << endl;
+        }
+    }
+}
+
+int main()
+{
+    check2();
+}
