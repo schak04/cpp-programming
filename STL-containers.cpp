@@ -143,6 +143,9 @@ void unorderedMapExample() {
     for (auto it = um.begin(); it != um.end(); ++it) {
         cout << it->first << ": " << it->second << endl;
     }
+    um.insert(make_pair("bird",8));
+    um.insert(make_pair("elephant",0));
+    um.erase("elephant");
 }
 
 /* MAIN */
