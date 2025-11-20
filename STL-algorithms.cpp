@@ -46,7 +46,11 @@ void nonModifyingAlgorithms() {
     cout << "Count of numbers > 10: "
          << count_if(data.begin(), data.end(), [](int x) { return x > 10; }) << endl;
 
-    auto [minIt, maxIt] = minmax_element(data.begin(), data.end());
+    /* before C++17: 
+    auto result = minmax_element(data.begin(), data.end());
+    auto minIt = result.first;
+    auto maxIt = result.second; */
+    auto [minIt, maxIt] = minmax_element(data.begin(), data.end()); // structured bindings -> require C++17 or later
     cout << "minmax_element => min: " << *minIt << ", max: " << *maxIt << endl;
     cout << noboolalpha;
 }
