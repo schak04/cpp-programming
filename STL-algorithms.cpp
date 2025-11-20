@@ -28,7 +28,10 @@ using namespace std;
 void nonModifyingAlgorithms() {
     vector<int> data = {3, 6, 9, 12, 15, 18};
 
-    cout << boolalpha;
+    /* std::boolalpha is a C++ I/O manipulator that controls the formatting of boolean values in
+    input and output streams. By default, boolean values are displayed as integers (1 for true and 0 for false).
+    When std::boolalpha is used, boolean values are displayed as their textual representations: "true" and "false". */
+    cout << boolalpha; 
     cout << "all_of multiples of 3? "
          << all_of(data.begin(), data.end(), [](int x) { return x % 3 == 0; }) << endl;
     cout << "any_of > 15? "
