@@ -20,8 +20,7 @@ void basicExample() {
     /* Basic Example */
     stringstream ss;
     ss << "Hello " << 123 << " world";
-    cout << ss.str() << "
-";  // Output: Hello 123 world
+    cout << ss.str();  // Output: Hello 123 world
 }
 
 /* 2. Extracting values (parsing) from a string */
@@ -32,8 +31,7 @@ void extractValues() {
     int a, b, c;
     ss >> a >> b >> c;
 
-    cout << a << " " << b << " " << c << "
-";
+    cout << a << " " << b << " " << c;
 }
 
 /* 3. Splitting a string by spaces using stringstream */
@@ -43,8 +41,7 @@ void splitString() {
     string word;
 
     while (ss >> word) {
-        cout << word << "
-";
+        cout << word;
     }
 }
 
@@ -54,8 +51,7 @@ void numberToString() {
     stringstream ss;
     ss << x;
     string s = ss.str();
-    cout << s << "
-";
+    cout << s;
     /* Note: std::to_string(x) is easier. */
 }
 
@@ -64,8 +60,7 @@ void stringToNumber() {
     string s = "123";
     int x;
     stringstream(s) >> x;
-    cout << x << "
-";
+    cout << x;
     /* Note: stoi(s) is simpler. */
 }
 
@@ -84,14 +79,12 @@ void isoExamples() {
     istringstream iss("10 20 30");
     int a, b, c;
     iss >> a >> b >> c;
-    cout << a << " " << b << " " << c << "
-";
+    cout << a << " " << b << " " << c;
 
     /* ostringstream example */
     ostringstream oss;
     oss << "Result: " << 42;
-    cout << oss.str() << "
-";
+    cout << oss.str();
 }
 
 /* 8. Parsing CSV-style comma-separated values */
@@ -101,8 +94,7 @@ void parseCSV() {
     string token;
 
     while (getline(ss, token, ',')) {
-        cout << token << "
-";
+        cout << token;
     }
 }
 
@@ -113,8 +105,7 @@ void formattedSentence() {
     int age = 21;
 
     ss << "Name: " << name << ", Age: " << age;
-    cout << ss.str() << "
-";
+    cout << ss.str();
 }
 
 /* 10. Converting vector<int> to a string */
@@ -124,8 +115,7 @@ void vectorToString() {
 
     for (int x : v) ss << x << " ";
 
-    cout << ss.str() << "
-";
+    cout << ss.str();
 }
 
 int main() {
